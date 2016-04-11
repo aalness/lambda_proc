@@ -90,6 +90,8 @@ func RunStream(handler Handler, Stdin io.Reader, Stdout io.Writer) {
 			if encErr := stdout.Encode(NewErrorResponse(err)); encErr != nil {
 				// bad times
 				log.Println("Failed to encode err response!", encErr.Error())
+				// bail
+				os.Exit(1)
 			}
 		}
 	}
